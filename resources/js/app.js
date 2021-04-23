@@ -3,9 +3,15 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import Vuetify from "vuetify";
+import IndexComponent from './components/IndexComponent.vue';
+import HogeComponent from './components/HogeComponent.vue';
 
 require('./bootstrap');
-
+Vue.use(VueRouter);
+Vue.use(Vuetify);
 window.Vue = require('vue').default;
 
 /**
@@ -20,6 +26,8 @@ window.Vue = require('vue').default;
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('header-component', require('./components/HeaderComponent.vue').default);
+Vue.component('hoge-component', require('./components/HogeComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -27,6 +35,29 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+Vue.use(VueRouter);
+
+const router = new VueRouter({
+    mode: 'history',
+    routes: [
+        {
+            // Index
+            path: '/',
+            name: 'index',
+            component: IndexComponent
+        },
+        {
+            // Test page
+            path: '/hoge',
+            name: 'hoge',
+            component: HogeComponent
+        }
+    ]
+
+});
+
 const app = new Vue({
     el: '#app',
+    router,
+    vuetify: new Vuetify(),
 });
