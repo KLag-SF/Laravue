@@ -6,12 +6,18 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Vuetify from "vuetify";
+import axios from "axios";
+import VueAxios from "vue-axios";
 import IndexComponent from './components/IndexComponent.vue';
-import HogeComponent from './components/HogeComponent.vue';
+import TimeInfoComponent from './components/TimeInfoComponent.vue';
+import StationComponent from "./components/StationComponent.vue";
+import LineComponent from "./components/LineComponent.vue";
+import TimetableComponent from "./components/TimetableComponent.vue";
 
 require('./bootstrap');
 Vue.use(VueRouter);
 Vue.use(Vuetify);
+Vue.use(VueAxios, axios);
 window.Vue = require('vue').default;
 
 /**
@@ -27,7 +33,8 @@ window.Vue = require('vue').default;
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('header-component', require('./components/HeaderComponent.vue').default);
-Vue.component('hoge-component', require('./components/HogeComponent.vue').default);
+Vue.component('time-info-component', require('./components/TimeInfoComponent.vue').default);
+Vue.component('line-component', require('./components/LineComponent.vue'))
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -47,11 +54,29 @@ const router = new VueRouter({
             component: IndexComponent
         },
         {
-            // Test page
-            path: '/hoge',
-            name: 'hoge',
-            component: HogeComponent
-        }
+            // Time information
+            path: '/timeinfo',
+            name: 'timeinfo',
+            component: TimeInfoComponent
+        },
+        {
+            // Station list
+            path: '/station',
+            name: 'stations',
+            component: StationComponent
+        },
+        {
+            // Line list
+            path: '/lines',
+            name: 'lines',
+            component: LineComponent
+        },
+        {
+            // Timetable
+            path: '/timetable',
+            name: 'timetable',
+            component: TimetableComponent
+        },
     ]
 
 });

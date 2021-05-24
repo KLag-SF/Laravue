@@ -13,8 +13,8 @@
           </router-link>
         </li>
         <li class="nav-item">
-          <router-link v-bind:to="{name: 'hoge'}">
-            <a class="nav-link" href="#">HOGE</a>
+          <router-link v-bind:to="{name: 'timeinfo'}">
+            <a class="nav-link" href="#">TIME INFO</a>
           </router-link>
         </li>
         <li class="nav-item">
